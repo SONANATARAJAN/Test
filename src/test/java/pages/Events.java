@@ -50,23 +50,6 @@ public class Events {
     }
 
 
-    public void requesterUser(String username) {
-        // Determine option based on username
-        String optionToSelect = username.equals("nocop1") ? "nocop1" :
-                username.equals("noafna") ? "noafna" : null;
-        if (optionToSelect == null) {
-            System.out.println("No specific selection for username: " + username);
-            return; // Exit if no valid option is found for username
-        }
-
-        // Click the dropdown and select the option
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("select2-chosen-10"))).click();
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//ul[@id='select2-results-10']/li")))
-                .stream()
-                .filter(option -> option.getText().equals(optionToSelect))
-                .findFirst()
-                .ifPresent(WebElement::click);
-    }
 
 
     public void modeOfRequest(String ModeofRequest) {
